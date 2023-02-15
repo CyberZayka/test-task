@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "title": "Home",
+      "url": "/"
+    },
+    {
+      "title": "Services",
+      "url": "/services",
+      "submenu": [
+        {
+          "title": "first service",
+          "url": "first-service"
+        },
+        {
+          "title": "second service",
+          "url": "second-service",
+          "submenu": [
+            {
+              "title": "Nested service",
+              "url": "nested-service"
+            },
+            {
+              "title": "Nested service",
+              "url": "nested-service"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "About",
+      "url": "/about"
+    },
+    {
+      "title": "Sign Up",
+      "url": "/form"
+    }
+  ]
+}
