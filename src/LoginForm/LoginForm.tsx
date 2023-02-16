@@ -53,13 +53,23 @@ const WrapperInput = styled('div')({
 })
 
 function LoginForm({ setCanceled, setIsShownModal }: any) {
-  const { login } = useLogin()
+  const { login, error } = useLogin()
+  const [errorMessage, setErrorMessage] = useState<string | null | unknown>(
+    null
+  )
 
-  const handleSubmit = (values: any, { resetForm }: any) => {
-    login(values)
+  const handleSubmit = async (values: any, { resetForm }: any) => {
+    try {
+      await login(values)
 
-    resetForm()
-    setIsShownModal(false)
+      resetForm()
+      setIsShownModal(false)
+      // eslint-disable-next-line no-shadow
+    } catch (err) {
+      if (err instanceof Error) {
+        setErrorMessage(err)
+      }
+    }
   }
 
   const handleCancel = () => {
@@ -100,12 +110,17 @@ function LoginForm({ setCanceled, setIsShownModal }: any) {
             </Field>
           </WrapperInput>
           <ButtonWrapper>
-            <StyledButtonSubmit type="submit" disabled={isSubmitting}>
-              Submit
-            </StyledButtonSubmit>
-            <StyledButtonClose type="button" onClick={handleCancel}>
-              Cancel
-            </StyledButtonClose>
+            <>
+              {errorMessage && (
+                <p style={{ color: 'red' }}>{`${errorMessage}. Try again`}</p>
+              )}
+              <StyledButtonSubmit type="submit" disabled={isSubmitting}>
+                Submit
+              </StyledButtonSubmit>
+              <StyledButtonClose type="button" onClick={handleCancel}>
+                Cancel
+              </StyledButtonClose>
+            </>
           </ButtonWrapper>
         </StyledForm>
       )}
