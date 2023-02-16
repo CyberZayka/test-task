@@ -1,11 +1,11 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { styled } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
-import validationSchema from '../_utils/validationSchema.js'
-import useLogin from '../api.js'
+import validationSchema from '../../_utils/validationSchema.js'
+import useLogin from '../../api.js'
+import { LoginFormProps } from './types.js'
 
 const StyledForm = styled(Form)({
   display: 'flex',
@@ -52,7 +52,7 @@ const WrapperInput = styled('div')({
   width: '100%',
 })
 
-function LoginForm({ setCanceled, setIsShownModal }: any) {
+function LoginForm({ setCanceled, setIsShownModal }: LoginFormProps) {
   const { login, error } = useLogin()
   const [errorMessage, setErrorMessage] = useState<string | null | unknown>(
     null

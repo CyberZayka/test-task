@@ -1,7 +1,5 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable import/no-extraneous-dependencies */
 import { styled } from '@mui/system'
+import React, { ReactElement } from 'react'
 
 const HeaderBox = styled('div')({
   height: '80px',
@@ -12,6 +10,10 @@ const HeaderBox = styled('div')({
   alignItems: 'center',
 })
 
-export default function Header({ children }: { children: any }) {
+type HeaderProps = {
+  children: ReactElement | ReactElement[] | string
+}
+
+export default function Header({ children }: HeaderProps) {
   return <HeaderBox>{children}</HeaderBox>
 }

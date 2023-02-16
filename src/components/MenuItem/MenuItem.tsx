@@ -1,11 +1,11 @@
 /* eslint-disable no-nested-ternary */
-/* eslint-disable react/prop-types */
 import React from 'react'
 import { ListItem, Collapse } from '@material-ui/core'
 import { ExpandLess, ExpandMore } from '@material-ui/icons'
 import { styled } from '@mui/system'
 import { Link } from 'react-router-dom'
 import SubMenu from '../SubMenu'
+import { MenuItemProps } from './types'
 
 const ListItemText = styled('div')({
   flex: '1 1 auto',
@@ -20,18 +20,19 @@ const Text = styled('span')({
   color: 'black',
 })
 
-function MenuItem({ item, index, openSubMenuIndex, handleClick }: any) {
+function MenuItem({
+  item,
+  index,
+  openSubMenuIndex,
+  handleClick,
+}: MenuItemProps) {
   return (
-    <Link
-      style={{ textDecoration: 'none' }}
-      to={item.url && item.url}
-      key={index}
-    >
+    <Link style={{ textDecoration: 'none' }} to={item.url || '#'} key={index}>
       <ListItem button onClick={() => handleClick(index)}>
         <ListItemText>
           <Text>{item.title}</Text>
         </ListItemText>
-        {item.submenu?.length > 0 ? (
+        {item && item.submenu && item.submenu?.length > 0 ? (
           openSubMenuIndex === index ? (
             <ExpandLess />
           ) : (

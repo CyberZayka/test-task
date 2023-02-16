@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Box from '@mui/material/Box'
 import { styled } from '@mui/system'
 import { Typography } from '@mui/material'
-import LoginForm from '../../LoginForm'
+import LoginForm from '../../components/LoginForm'
 
 const BoxWrapper = styled('div')({
   width: '100%',

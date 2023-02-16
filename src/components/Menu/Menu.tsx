@@ -1,19 +1,9 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react'
-import {
-  Drawer,
-  List,
-  ListItem,
-  makeStyles,
-  // ListItemText,
-} from '@material-ui/core'
+import { Drawer, List, ListItem, makeStyles } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import { styled } from '@mui/system'
 import MenuItem from '../MenuItem'
+import { MenuElem, MenuProps } from './types'
 
 const drawerWidth = 240
 
@@ -48,7 +38,7 @@ const Text = styled('span')({
   color: 'black',
 })
 
-function Menu({ data }: any) {
+function Menu({ data }: MenuProps) {
   const classes = useStyles()
   const [openSubMenuIndex, setOpenSubMenuIndex] = useState(-1)
 
@@ -56,9 +46,9 @@ function Menu({ data }: any) {
     setOpenSubMenuIndex(openSubMenuIndex === index ? -1 : index)
   }
 
-  const renderMenuItems = (menuData: any[]) => {
+  const renderMenuItems = (menuData: MenuElem[]) => {
     return menuData.map((item, index) => {
-      if (item.submenu?.length > 0) {
+      if (item && item.submenu && item.submenu.length > 0) {
         return (
           <MenuItem
             item={item}
@@ -69,8 +59,8 @@ function Menu({ data }: any) {
         )
       }
       return (
-        <Link className={classes.link} to={item.url && item.url}>
-          <ListItem button key={index}>
+        <Link className={classes.link} to={item.url || '#'}>
+          <ListItem button key={item.title + Math.floor(Math.random() * 10)}>
             <ListItemText>
               <Text>{item.title}</Text>
             </ListItemText>

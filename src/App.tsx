@@ -4,8 +4,8 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import './App.css'
 import { styled } from '@mui/material'
 import AppRoutes from './AppRoutes'
-import Header from './Header'
-import Menu from './Menu'
+import Header from './components/Header'
+import Menu from './components/Menu'
 import menu from './mockData.json'
 
 const AppBox = styled('div')({
