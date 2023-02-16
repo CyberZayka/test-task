@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { styled } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import validationSchema from '../_utils/validationSchema.js'
+import useLogin from '../api.js'
 
 const StyledForm = styled(Form)({
   display: 'flex',
@@ -12,10 +14,6 @@ const StyledForm = styled(Form)({
   justifyContent: 'space-between',
   marginTop: '30px',
   height: '100%',
-})
-
-const StyledErrorMessage = styled(ErrorMessage)({
-  color: 'red',
 })
 
 const StyledButton = styled(Button)({
@@ -54,19 +52,19 @@ const WrapperInput = styled('div')({
   width: '100%',
 })
 
-function LoginForm() {
-  const handleSubmit = (values: any, { setSubmitting, resetForm }: any) => {
-    const fakeEndpoint = 'https://example.com/login'
-    // Do something with the form data, e.g. send it to a server
-    console.log(values)
-    // Reset the form after submitting
+function LoginForm({ setCanceled, setIsShownModal }: any) {
+  const { login } = useLogin()
+
+  const handleSubmit = (values: any, { resetForm }: any) => {
+    login(values)
+
     resetForm()
-    // Set submitting to false to enable the submit button again
-    setSubmitting(false)
+    setIsShownModal(false)
   }
 
   const handleCancel = () => {
-    // Do something to go back to previous menu
+    setCanceled(true)
+    setIsShownModal(false)
   }
 
   return (
@@ -74,6 +72,8 @@ function LoginForm() {
       initialValues={{ username: '', password: '' }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
+      validateOnChange
+      validateOnBlur
     >
       {({ isSubmitting }) => (
         <StyledForm>
@@ -82,11 +82,7 @@ function LoginForm() {
               {({ field }: any) => (
                 <>
                   <CustomInput {...field} type="text" placeholder="Username" />
-                  <StyledErrorMessage
-                    name="username"
-                    component="div"
-                    className="error"
-                  />
+                  <ErrorMessage name="username" />
                 </>
               )}
             </Field>
@@ -98,11 +94,7 @@ function LoginForm() {
                     type="password"
                     placeholder="Password"
                   />
-                  <StyledErrorMessage
-                    name="password"
-                    component="div"
-                    className="error"
-                  />
+                  <ErrorMessage name="password" />
                 </>
               )}
             </Field>
