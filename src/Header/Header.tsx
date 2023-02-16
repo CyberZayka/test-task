@@ -4,9 +4,9 @@
 import { styled } from '@mui/system'
 
 const HeaderBox = styled('div')({
-  height: '120px',
+  height: '80px',
   width: '100%',
-  backgroundColor: '#0D81D0',
+  boxShadow: '0px 5px 10px 0px rgba(0, 0, 0, 0.5)',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',

@@ -1,45 +1,96 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/prop-types */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable import/no-extraneous-dependencies */
+import React, { useState } from 'react'
+import {
+  Drawer,
+  List,
+  ListItem,
+  makeStyles,
+  // ListItemText,
+} from '@material-ui/core'
+import { Link } from 'react-router-dom'
 import { styled } from '@mui/system'
-import React from 'react'
+import MenuItem from '../MenuItem'
 
-const NavigationWrapper = styled('nav')({
-  display: 'flex',
-  justifyContent: 'center',
-  flexWrap: 'wrap',
-  position: 'relative',
+const drawerWidth = 240
+
+const useStyles = makeStyles((theme) => ({
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+    backgroundColor: '#0D81D0',
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
+  link: {
+    textDecoration: 'none',
+    textUnderline: 'none',
+  },
+}))
+
+const ListItemText = styled('div')({
+  flex: '1 1 auto',
+  minWidth: 0,
+  marginTop: '4px',
+  marginBottom: '4px',
 })
 
-const CustomButton = styled('button')({
-  padding: '15px',
-  boxShadow: '0px 5px 10px 0px rgba(0, 0, 0, 0.5)',
-  color: 'white',
-  fontSize: '12px',
-  backgroundColor: '#5F9EA0',
-  border: 'none',
-  borderRadius: '5px',
-  margin: '0 10px',
+const Text = styled('span')({
+  fontSize: '1rem',
+  fontWeight: 500,
+  color: 'black',
 })
 
-export default function Menu({ data }: any) {
-  return (
-    <NavigationWrapper>
-      {data.map(
-        (el: {
-          title:
-            | string
-            | number
-            | boolean
-            | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-            | React.ReactFragment
-            | React.ReactPortal
-            | null
-            | undefined
-        }) => (
-          <CustomButton>{el.title}</CustomButton>
+function Menu({ data }: any) {
+  const classes = useStyles()
+  const [openSubMenuIndex, setOpenSubMenuIndex] = useState(-1)
+
+  const handleClick = (index: React.SetStateAction<number>) => {
+    setOpenSubMenuIndex(openSubMenuIndex === index ? -1 : index)
+  }
+
+  const renderMenuItems = (menuData: any[]) => {
+    return menuData.map((item, index) => {
+      if (item.submenu?.length > 0) {
+        return (
+          <MenuItem
+            item={item}
+            index={index}
+            openSubMenuIndex={openSubMenuIndex}
+            handleClick={handleClick}
+          />
         )
-      )}
-    </NavigationWrapper>
+      }
+      return (
+        <Link className={classes.link} to={item.url && item.url}>
+          <ListItem button key={index}>
+            <ListItemText>
+              <Text>{item.title}</Text>
+            </ListItemText>
+          </ListItem>
+        </Link>
+      )
+    })
+  }
+
+  return (
+    <Drawer
+      className={classes.drawer}
+      variant="permanent"
+      classes={{
+        paper: classes.drawerPaper,
+      }}
+    >
+      <List>{renderMenuItems(data)}</List>
+    </Drawer>
   )
 }
+
+export default Menu

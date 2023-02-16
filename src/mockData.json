@@ -6,23 +6,21 @@
     },
     {
       "title": "Services",
-      "url": "/services",
       "submenu": [
         {
           "title": "first service",
-          "url": "first-service"
+          "url": "services/first-service"
         },
         {
           "title": "second service",
-          "url": "second-service",
           "submenu": [
             {
               "title": "Nested service",
-              "url": "nested-service"
+              "url": "services/nested-service"
             },
             {
               "title": "Nested service",
-              "url": "nested-service"
+              "url": "services/nested-service"
             }
           ]
         }
