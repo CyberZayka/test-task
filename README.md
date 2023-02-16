@@ -1,6 +1,23 @@
-# Getting Started with Create React App
+# Test task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This task includes several components, such as a sidebar, a modal window, and a form.
+Added the ability to route between pages. The menu component in the sidebar is multi-level,
+the levels of which can be described in the mockData.json file. Some of the buttons in the menu are links to different pages,
+while others are buttons that activate internal menus and show them. One of the pages has a component with an authentication form.
+
+To implement the login function, I used a fake API - https://dummyjson.com/users. Since this is a login, there are already users there.
+
+You can take the credentials of any of them from the json file, for example: - username: atuny0, - password: 9uQFF1Lh.
+
+If you enter incorrect or invalid data, an error will be displayed. When you click on the "cancel" button, the modal window with the form is closed. Also was added linter and husky
+
+## Used technologies and libraries
+
+- ReactJS
+- TypeScript
+- Material-UI
+- Formik
+- React-Query
 
 ## Available Scripts
 
@@ -11,36 +28,14 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `npm run lint`
 
-### `npm test`
+Runs linter to check some issues with code
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `npm run lint:fix`
 
-### `npm run build`
+Fix founded issues with code
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `npm run format:check`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Check prettier configs
