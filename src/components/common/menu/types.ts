@@ -1,11 +1,15 @@
-type MenuItem = {
+export type MenuElem = {
   url?: string
-  submenu?: MenuItem[]
+  submenu?: MenuElem[]
   title: string
 }
 
+export interface MenuProps {
+  data: MenuElem[]
+}
+
 export interface MenuItemProps {
-  item: MenuItem
+  item: MenuElem
   index: number
   openSubMenuIndex: number
   handleClick: (index: number) => void

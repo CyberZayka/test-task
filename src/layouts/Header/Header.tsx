@@ -10,7 +10,8 @@ import {
 } from '@mui/material'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { styled } from '@mui/system'
-import React, { ReactElement } from 'react'
+import React from 'react'
+import { HeaderProps } from './types'
 
 const HeaderBox = styled('div')({
   height: '80px',
@@ -22,16 +23,12 @@ const HeaderBox = styled('div')({
   position: 'relative',
 })
 
-type HeaderProps = {
-  children: ReactElement | ReactElement[] | string
-}
-
 export default function Header({
   handleShowForm,
   token,
   headerText,
   handleShowConfirmationModal,
-}: any) {
+}: HeaderProps) {
   const [openProfileMenu, setProfileMenuOpen] = React.useState(false)
   const anchorRef = React.useRef(null)
 

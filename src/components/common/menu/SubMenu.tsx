@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { List } from '@material-ui/core'
-import MenuItem from '../MenuItem'
-import { SubMenuElem, SubMenuProps } from './types'
+import MenuItem from './MenuItem'
+import { MenuElem, MenuProps } from './types'
 
-function SubMenu({ data }: SubMenuProps) {
+function SubMenu({ data }: MenuProps) {
   const [openSubMenuIndex, setOpenSubMenuIndex] = useState(-1)
 
   const handleClick = (index: React.SetStateAction<number>) => {
     setOpenSubMenuIndex(openSubMenuIndex === index ? -1 : index)
   }
 
-  const renderSubMenuItems = (subMenu: SubMenuElem[]) => {
+  const renderSubMenuItems = (subMenu: MenuElem[]) => {
     return subMenu.map((item, index) => (
       <MenuItem
         item={item}

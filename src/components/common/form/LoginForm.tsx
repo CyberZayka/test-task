@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { styled } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
-import validationSchema from '../../_utils/validationSchema.js'
-import useLogin from '../../api.js'
-import { LoginFormProps } from './types.js'
-import storage from '../../_utils/storage.js'
+import validationSchema from '../../../_utils/validationSchema.js'
+import useLogin from '../../../api/api.js'
+import { CurrentUser, LoginFormProps } from './types.js'
+import storage from '../../../_utils/storage.js'
 
 const StyledForm = styled(Form)({
   display: 'flex',
@@ -53,18 +53,14 @@ const WrapperInput = styled('div')({
   width: '100%',
 })
 
-type CurrentUser = {
-  username: string
-  password: string
-}
-
-function LoginForm({ handleShowForm, setCurrentUser }: any) {
+function LoginForm({ handleShowForm, setCurrentUser }: LoginFormProps) {
   const { login, error } = useLogin()
-  const [errorMessage, setErrorMessage] = useState<string | null | unknown>(
-    null
-  )
+  const [errorMessage, setErrorMessage] = useState<string | null | Error>(null)
 
-  const handleSubmit = async (values: any, { resetForm }: any) => {
+  const handleSubmit = async (
+    values: CurrentUser,
+    { resetForm }: { resetForm: () => void }
+  ) => {
     try {
       await login(values)
       storage.setToken('here_will_be_a_token')

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Drawer, List, ListItem, makeStyles } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import { styled } from '@mui/system'
-import MenuItem from '../MenuItem'
+import MenuItem from './MenuItem'
 import { MenuElem, MenuProps } from './types'
 
 const drawerWidth = 240

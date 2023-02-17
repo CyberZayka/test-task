@@ -1,9 +1,9 @@
+import { Home } from '@material-ui/icons'
 import React from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
-import AboutPage from '../Pages/AboutPage'
-import FirstServicePage from '../Pages/FirstServicePage'
-import Home from '../Pages/HomePage'
-import SecondServicePage from '../Pages/SecondServicePage'
+import AboutPage from '../../pages/AboutPage'
+import FirstServicePage from '../../pages/FirstServicePage'
+import SecondServicePage from '../../pages/SecondServicePage'
 
 export default function AppRoutes() {
   return (

@@ -4,7 +4,7 @@ import { ListItem, Collapse } from '@material-ui/core'
 import { ExpandLess, ExpandMore } from '@material-ui/icons'
 import { styled } from '@mui/system'
 import { Link } from 'react-router-dom'
-import SubMenu from '../SubMenu'
+import SubMenu from './SubMenu'
 import { MenuItemProps } from './types'
 
 const ListItemText = styled('div')({

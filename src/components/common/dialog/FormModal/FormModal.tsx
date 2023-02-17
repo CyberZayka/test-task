@@ -1,13 +1,14 @@
 import React from 'react'
 import Box from '@mui/material/Box'
 import { Typography, Dialog } from '@mui/material'
-import LoginForm from '../../components/LoginForm'
+import LoginForm from '../../form'
+import { FormModalProps } from './types'
 
-export default function FormPage({
+export default function FormModal({
   showForm,
   handleShowForm,
   setCurrentUser,
-}: any) {
+}: FormModalProps) {
   return (
     <Dialog open={showForm}>
       <Box

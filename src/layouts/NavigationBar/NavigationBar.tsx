@@ -1,17 +1,21 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable consistent-return */
 import React, { useState, useEffect } from 'react'
-import FormPage from '../../Pages/FormPage/FormPage'
+import FormPage from '../../components/common/dialog/FormModal/FormModal'
 import storage from '../../_utils/storage.js'
-import ConfirmationModal from '../ConfirmationModal'
+import ConfirmationModal from '../../components/common/dialog/ConfirmationModal'
 import Header from '../Header/Header'
 
+type CurrentUserProps = {
+  username: string
+  password: string
+}
+
 export default function NavigationBar() {
-  const [currentUser, setCurrentUser] = useState<any>(null)
+  const [currentUser, setCurrentUser] = useState<CurrentUserProps | null>(null)
   const [showForm, setShowForm] = useState<boolean>(false)
-  const [token, setToken] = useState(null)
-  const [headerText, setHeaderText] = useState('Hello, stranger...')
-  const [showConfirmationModal, setShowConfirmationModal] = useState(false)
+  const [token, setToken] = useState<null | string>(null)
+  const [headerText, setHeaderText] = useState<string>('Hello, stranger...')
+  const [showConfirmationModal, setShowConfirmationModal] =
+    useState<boolean>(false)
 
   useEffect(() => {
     if (token) {

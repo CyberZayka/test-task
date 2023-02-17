@@ -6,6 +6,7 @@ import {
   DialogActions,
   DialogContent,
 } from '@material-ui/core'
+import { ConfirmationModalProps } from './types'
 
 export default function ConfirmationModal({
   title,
@@ -13,7 +14,7 @@ export default function ConfirmationModal({
   showConfirmationModal,
   handleShowConfirmationModal,
   handleClearCache,
-}: any) {
+}: ConfirmationModalProps) {
   return (
     <Dialog open={showConfirmationModal}>
       <DialogContent>
