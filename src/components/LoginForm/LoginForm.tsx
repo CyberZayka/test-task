@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button'
 import validationSchema from '../../_utils/validationSchema.js'
 import useLogin from '../../api.js'
 import { LoginFormProps } from './types.js'
+import storage from '../../_utils/storage.js'
 
 const StyledForm = styled(Form)({
   display: 'flex',
@@ -52,7 +53,12 @@ const WrapperInput = styled('div')({
   width: '100%',
 })
 
-function LoginForm({ setCanceled, setIsShownModal }: LoginFormProps) {
+type CurrentUser = {
+  username: string
+  password: string
+}
+
+function LoginForm({ handleShowForm, setCurrentUser }: any) {
   const { login, error } = useLogin()
   const [errorMessage, setErrorMessage] = useState<string | null | unknown>(
     null
@@ -61,10 +67,11 @@ function LoginForm({ setCanceled, setIsShownModal }: LoginFormProps) {
   const handleSubmit = async (values: any, { resetForm }: any) => {
     try {
       await login(values)
+      storage.setToken('here_will_be_a_token')
+      setCurrentUser(values)
 
       resetForm()
-      setIsShownModal(false)
-      // eslint-disable-next-line no-shadow
+      handleShowForm()
     } catch (err) {
       if (err instanceof Error) {
         setErrorMessage(err)
@@ -73,8 +80,7 @@ function LoginForm({ setCanceled, setIsShownModal }: LoginFormProps) {
   }
 
   const handleCancel = () => {
-    setCanceled(true)
-    setIsShownModal(false)
+    handleShowForm()
   }
 
   return (

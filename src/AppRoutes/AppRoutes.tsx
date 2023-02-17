@@ -2,7 +2,6 @@ import React from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import AboutPage from '../Pages/AboutPage'
 import FirstServicePage from '../Pages/FirstServicePage'
-import FormPage from '../Pages/FormPage'
 import Home from '../Pages/HomePage'
 import SecondServicePage from '../Pages/SecondServicePage'
 
@@ -12,7 +11,6 @@ export default function AppRoutes() {
       <Route path="/services/first-service" element={<FirstServicePage />} />
       <Route path="/services/nested-service" element={<SecondServicePage />} />
       <Route path="/about" element={<AboutPage />} />
-      <Route path="/form" element={<FormPage />} />
       <Route path="/home" element={<Home />} />
       <Route path="/" element={<Navigate to="/home" />} />
       <Route path="*" element={<p>Not found!</p>} />
