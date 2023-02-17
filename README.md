@@ -11,6 +11,8 @@ You can take the credentials of any of them from the json file, for example: - u
 
 If you enter incorrect or invalid data, an error will be displayed. When you click on the "cancel" button, the modal window with the form is closed. Also was added linter and husky
 
+There was implemented simple unit tests using testing-library/react
+
 ## Used technologies and libraries
 
 - ReactJS

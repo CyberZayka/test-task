@@ -6,11 +6,10 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { MenuProps } from '../../components/common/menu/types'
 import Menu from '../../components/common/menu'
-import getComponentClasses from '../_utils/getClasses'
 
 const queryClient = new QueryClient()
 
-const props: any = {
+const props: MenuProps = {
   data: [
     {
       title: 'Home',

@@ -111,11 +111,11 @@ function LoginForm({ handleShowForm, setCurrentUser }: LoginFormProps) {
               )}
             </Field>
           </WrapperInput>
+          {errorMessage && (
+            <p style={{ color: 'red' }}>{`${errorMessage}. Try again`}</p>
+          )}
           <ButtonWrapper>
             <>
-              {errorMessage && (
-                <p style={{ color: 'red' }}>{`${errorMessage}. Try again`}</p>
-              )}
               <StyledButtonSubmit type="submit" disabled={isSubmitting}>
                 Submit
               </StyledButtonSubmit>
