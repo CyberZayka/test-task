@@ -62,7 +62,7 @@ function Menu({ data }: MenuProps) {
         <Link className={classes.link} to={item.url || '#'}>
           <ListItem button key={item.title + Math.floor(Math.random() * 10)}>
             <ListItemText>
-              <Text>{item.title}</Text>
+              <Text data-testid="item-title">{item.title}</Text>
             </ListItemText>
           </ListItem>
         </Link>
@@ -77,6 +77,7 @@ function Menu({ data }: MenuProps) {
       classes={{
         paper: classes.drawerPaper,
       }}
+      data-testid="menu"
     >
       <List>{renderMenuItems(data)}</List>
     </Drawer>

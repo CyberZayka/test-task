@@ -16,7 +16,7 @@ export default function ConfirmationModal({
   handleClearCache,
 }: ConfirmationModalProps) {
   return (
-    <Dialog open={showConfirmationModal}>
+    <Dialog data-testid="confirmation-modal" open={showConfirmationModal}>
       <DialogContent>
         <Box
           sx={{
@@ -37,10 +37,15 @@ export default function ConfirmationModal({
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button variant="outlined" onClick={handleShowConfirmationModal}>
+        <Button
+          data-testid="cancel-button"
+          variant="outlined"
+          onClick={handleShowConfirmationModal}
+        >
           Cancel
         </Button>
         <Button
+          data-testid="ok-button"
           variant="contained"
           onClick={() => {
             handleShowConfirmationModal()

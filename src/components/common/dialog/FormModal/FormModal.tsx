@@ -10,7 +10,7 @@ export default function FormModal({
   setCurrentUser,
 }: FormModalProps) {
   return (
-    <Dialog open={showForm}>
+    <Dialog id="form-modal" data-testid="form-modal" open={showForm}>
       <Box
         sx={{
           width: 550,
