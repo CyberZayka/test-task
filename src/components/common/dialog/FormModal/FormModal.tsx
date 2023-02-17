@@ -13,9 +13,9 @@ export default function FormModal({
     <Dialog id="form-modal" data-testid="form-modal" open={showForm}>
       <Box
         sx={{
-          width: 550,
-          height: 350,
-          bgcolor: '#36393f',
+          width: 320,
+          height: 385,
+          bgcolor: '#6497b1',
           borderRadius: '5px',
           boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
           display: 'flex',

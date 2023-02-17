@@ -7,7 +7,7 @@ import { MenuElem, MenuProps } from './types'
 
 const drawerWidth = 240
 
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,

@@ -10,45 +10,47 @@ import getComponentClasses from '../_utils/getClasses'
 
 const queryClient = new QueryClient()
 
-const data: any = [
-  {
-    title: 'Home',
-    url: '/',
-  },
-  {
-    title: 'Services',
-    submenu: [
-      {
-        title: 'first service',
-        url: 'services/first-service',
-      },
-      {
-        title: 'second service',
-        submenu: [
-          {
-            title: 'Nested service',
-            url: 'services/nested-service',
-          },
-          {
-            title: 'Nested service',
-            url: 'services/nested-service',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: 'About',
-    url: '/about',
-  },
-]
+const props: any = {
+  data: [
+    {
+      title: 'Home',
+      url: '/',
+    },
+    {
+      title: 'Services',
+      submenu: [
+        {
+          title: 'first service',
+          url: 'services/first-service',
+        },
+        {
+          title: 'second service',
+          submenu: [
+            {
+              title: 'Nested service',
+              url: 'services/nested-service',
+            },
+            {
+              title: 'Nested service',
+              url: 'services/nested-service',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: 'About',
+      url: '/about',
+    },
+  ],
+}
 
 describe('Menu unit tests', () => {
   test('Menu component renders properly', () => {
     const { getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <Router>
-          <Menu data={data} />
+          <Menu data={props.data} />
         </Router>
       </QueryClientProvider>
     )
@@ -56,20 +58,5 @@ describe('Menu unit tests', () => {
     const menu = getByTestId('menu')
 
     expect(menu).toBeInTheDocument()
-  })
-  test.skip('Menu component gets right class', () => {
-    const { getByTestId } = render(
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <Menu data={data} />
-        </Router>
-      </QueryClientProvider>
-    )
-
-    const classes = getComponentClasses<any>(<Menu data={data} />)
-
-    const menu = getByTestId('menu')
-
-    expect(menu).toHaveClass(classes.drawerPaper)
   })
 })
